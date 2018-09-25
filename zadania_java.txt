@@ -1,0 +1,809 @@
+Napisaæ program s³u¿¹cy do konwersji wartoœci temperatury podanej w stopniach Celsjusza na stopnie 
+w skali Farenheita (st. F = 1.8* st. C + 32)
+
+    public static void main(String[] args) {
+
+double celsius=23.6;
+double farentheit=(1.8*celsius)+32;
+System.out.println("temperatura Celsiusza: "+celsius);
+System.out.println("temperatura Farentheita: "+farentheit);
+    }
+}
+
+----------------------------------------------
+Wczytaæ od u¿ytkownika 3 liczby ca³kowite i wypisaæ na ekran najwiêksz¹ oraz najmniejsz¹ z nich
+
+import java.util.Scanner;
+public class Bable {
+
+    
+    public static void main(String[] args) {
+
+Scanner sc=new Scanner(System.in);
+System.out.println("podaj wartoœæ liczby a");
+int a=sc.nextInt();
+System.out.println("podaj wartoœæ liczby b");
+int b=sc.nextInt();
+System.out.println("podaj wartoœæ liczby c");
+int c=sc.nextInt();
+
+if (a>b && a>c)
+    System.out.println("a= "+a+" jest najwieksza liczba ");
+if (b>a && b>c)
+    System.out.println("b= "+b+" jest najwieksza liczba ");
+if (c>a && c>b)
+    System.out.println("c= "+c+" jest najwieksza liczba ") ;
+
+if (a<b && a<c)
+    System.out.println("a= "+a+" jest najmniejsza liczba ");
+if (b<a && b<c)
+    System.out.println("b= "+b+" jest najmniejsza liczba ");
+if (c<b && c<a)
+    System.out.println("c= "+c+" jest najmniejsza liczba ");
+    }
+}
+
+----------------------------------
+
+napisaæ program który oblicza wartoœæ wspó³czynnika BMI (ang. body mass index) wg. wzoru (waga/wzrost^2). Je¿eli wynik jest w przedziale (18,5-24,9) to wypisuje "waga prawid³owa", je¿eli poni¿ej to "niedowaga", je¿eli powy¿ej "nadwaga".
+
+    public static void main(String[] args) {
+Scanner sc =new Scanner(System.in);
+
+System.out.println("Podaj wagê: ");
+double waga=sc.nextDouble();
+
+System.out.println("Podaj wzrost w [m]: ");
+ double wzrost=sc.nextDouble();
+
+double bmi=waga/(wzrost*wzrost);
+
+if (bmi<(18.5))
+System.out.println("niedowaga");
+else if (bmi >18.5 && bmi < 24.9)
+    System.out.println("waga prawid³owa");
+else
+    System.out.println("nadwaga");
+
+System.out.println("bmi= "+bmi);
+    }
+}
+
+-------------------------------
+
+ Napisaæ program realizuj¹cy funkcje prostego kalkulatora, pozwalaj¹cego na wykonywanie operacji dodawania, odejmowania, mno¿enia i dzielenia na dwóch liczbach rzeczywistych. Program ma identyfikowaæ sytuacjê wprowadzenia b³êdnego symbolu dzia³ania oraz próbê dzielenia przez zero. Zastosowaæ instrukcjê switch do wykonania odpowiedniego dzia³ania w zale¿noœci od wprowadzonego symbolu operacji. Scenariusz dzia³ania programu:
+a)Program wyœwietla informacje o swoim przeznaczeniu
+b)wczytuje pierwsz¹ liczbê 
+c) wczytuje symbol operacji arytmetycznej + / * - 
+d) wczytuje drug¹ liczbê
+e) wyœwietla wynik lub w razie koniecznoœci informacje o niemo¿noœci wykonania dzia³ania
+
+ public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        char znak='a';
+        String napis;
+        double wynik=0;
+        
+        System.out.println("To jest kalkulator. Wykonuje operacje dodawania,odejmowania"
+        + "mno¿enia i dzielenia dwóch liczb");
+
+        System.out.println("Podaj pierwsz¹ liczbê: ");
+        double a=sc.nextDouble();
+        while  (znak!='*' && znak!='/' && znak!='+' && znak!='-'){
+         System.out.println("Podaj znak operacji jak¹ chcesz wykonaæ(do wyboru '+','-','/','*'): ");    
+          try{  znak=(char)System.in.read();
+          //System.out.println(znak);
+          }
+          catch(Exception e){           
+          }           
+          }
+       System.out.println("Podaj drug¹ liczbê: ");
+        double b=sc.nextDouble(); 
+        
+        if (b!=0 && znak!='/')
+        {
+            switch (znak){
+                    case '+' :
+                        wynik=a+b;
+                        break;
+                    case '-' :
+                        wynik=a-b; 
+                        break;
+                    case '*' :
+                        wynik=a*b;
+                        break;
+                    case '/':
+                        wynik=a/b;
+                        break;
+            }
+        System.out.println("wynik= "+ wynik);
+        }
+        else
+            System.out.println("nie mo¿na wykonac operacji ");
+}
+}
+
+-----------------------------------------
+
+ Napisaæ program, który 
+-utworzy tablicê liczb ca³kowitych i wype³ni j¹ wartoœciami losowymi z przedzia³u [-10,10]
+-wypisze na ekranie zawartoœæ tablicy
+-wyznaczy na ekranie zawartoœæ tablicy
+-wyznaczy najmniejszy oraz najwiêkszy element w tablicy
+-wyznaczy œredni¹ arytmetyczn¹ elementó tablicy
+-wyznaczy ile elementó jest mniejszych ile wiêkszych od œredniej
+-wypisze na ekranie zawartoœæ tablicy w odwrotnej kolejnoœci  tj. od ostatniego do pierwszego
+
+Wszysyko powinno zostaæ wyœwietlone na ekranie
+
+    Random r=new Random();
+   
+        int[] tablica;
+        tablica= new int[10];
+         
+   for(int i=0; i<10; i++)
+   {
+     try{  tablica[i]=r.nextInt(20)-10;
+       System.out.print(tablica[i] +", ");
+     }
+     catch (Exception e){
+     }
+   }
+   System.out.println();
+   
+   int min=10;
+   for(int i=0; i<10; i++)
+   {
+       if(min>tablica[i]){
+           min=tablica[i];
+       }
+   }
+   System.out.println("minimalna: "+ min);
+   
+   int max=(-10);
+   for(int i=0; i<10; i++)
+   {
+       if(max<tablica[i]){
+           max=tablica[i];
+       }
+   }
+   System.out.println("maxymalna: "+ max);
+   
+   double srednia=0;
+   for(int i=0;i<10;i++){
+       srednia+=tablica[i];
+          }
+   srednia=srednia/10;
+   System.out.println("srednia: "+ srednia);
+   
+   int j=0;
+   for(int i=0;i<10;i++)
+   {
+       if(srednia<tablica[i])
+           j++;
+   }
+   System.out.println("od œredniej wiêkszysch jest: "+j+" elementów");
+   
+   int k=0;
+   for(int i=0;i<10;i++)
+   {
+       if(srednia>tablica[i])
+           k++;
+   }
+   System.out.println("od œredniej mniejszych jest: "+k+" elementów");
+   
+   int tmp=0;
+   for(int i=0;i<5;i++){
+      tmp=tablica[i];
+      tablica[i]=tablica[9-i];
+      tablica[9-i]=tmp;
+   }
+   
+   for(int i=0; i<10; i++)
+   {
+       System.out.print(tablica[i]+", ");
+   }
+
+------------------------------------------------
+Napisaæ program który utworzy tablicê 20 liczb calkowitych z przedzia³u 1-10 a nastêpnie wypisze na ekranie ile razy ka¿da z liczb z tego przedzia³u powtarza siê w tablicy
+
+  Random r=new Random();
+   
+        int[] tablica;
+        tablica= new int[20];
+        
+        for(int i=0; i<20; i++)
+        {
+            tablica[i]=r.nextInt(10)+1;
+            System.out.print(tablica[i] + "' ");
+            
+        }  
+        
+        System.out.println();
+        
+        for(int i=1;i <11;i++){
+           int k=0;
+            for(int j=0; j<20; j++){
+                if(i==tablica[j]){
+                    k++;
+                }
+            }
+            System.out.println("liczba "+i+" wyst¹pi³a "+ k);
+        }
+-----------------------------------------
+
+Napisz program który 
+-stworzy tablicê macierz 5x5 liczb ca³kowitych
+-wype³ni j¹ losowymi wartoœciami z zakresu -5 5
+-dla ka¿dej koluny wyznaczy minimum
+-dla ka¿dej kolumny wyznaczy maksimum
+
+Random r=new Random();
+   
+        int[][] tablica;
+        tablica = new int[5][5];
+        
+        for(int i=0; i<5; i++){
+            for(int j=0; j<5; j++){
+                tablica[i][j]=r.nextInt(10)-5;
+                System.out.print(tablica[i][j]);
+            }
+            System.out.println();
+        }
+        
+        
+        for(int j=0; j<5; j++){
+            int min=5;
+            for(int i = 0; i<5; i++){
+                if(min>tablica[i][j]){
+                    min=tablica[i][j];
+                }
+            }
+            System.out.println("kolumna "+ j +" posiada najmniejsza wartoœæ "+min );
+        }
+        
+        for(int j=0; j<5; j++){
+            int max=-5;
+            for(int i = 0; i<5; i++){
+                if(max<tablica[i][j]){
+                    max=tablica[i][j];
+                }
+            }
+            System.out.println("kolumna "+ j +" posiada najmniejsza wartoœæ "+max );
+        }
+
+---------------------------------------
+Zdefiniowaæ funkcjê int strpos(String text, char z) któa zwraca indels na którym znajduje siê znak z (drugi parametr) w podanym ³añcuchu text. je¿eli znak z nie wystêpuje w ³acuchu to wynikiem funkcji powinno byæ -1. Uwaga pozycje znków numerujemy od 0.
+
+  public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+                
+         System.out.println("podaj napis");
+       
+       String tekst=sc.nextLine();
+       char z ='a';
+      System.out.println("podaj znak"); 
+      try{
+          z=(char)System.in.read();
+      }
+      catch(Exception e){
+          
+      }
+     str nowe= new str();
+     nowe.strpos(tekst, z);
+      
+       
+}}
+class str{
+    
+    str(){
+        
+    }
+    int strpos(String tekst, char z){
+        char tab[]=tekst.toCharArray();
+        for(int i=0; i<tekst.length();i++)
+            if(tab[i]==z)
+                System.out.println("nr indeksu "+i);
+        
+             return 0;   
+    } 
+}
+
+---------------------------------
+
+Zdefiniowaæ funkcjê boolean startsWith(String str1, String str2), któa sprawdza czy ³añcuch str2 jest prefiksem ³añcucha str1
+ 
+         System.out.println("podaj pierwszy wyraz");
+       String dlugiCiag=sc.nextLine();
+       System.out.println("podaj prefiks");
+       String malyCiag=sc.nextLine();
+       
+      
+        int indeks=dlugiCiag.indexOf(malyCiag);
+       
+        boolean poczatek;
+        if(indeks==0)
+            poczatek=true;
+        else
+            poczatek=false;
+        System.out.println(poczatek);    
+    
+LUB TE¯:
+
+System.out.println("podaj pierwszy wyraz");
+       String dlugiCiag=sc.nextLine();
+       System.out.println("podaj prefiks");
+       String malyCiag=sc.nextLine();
+       
+      
+    boolean flaga=dlugiCiag.startsWith(malyCiag);
+    System.out.println(flaga);
+       
+-----------------------------------------
+Zdefiniowaæ funkcje int strToInt (String str) która zamienia liczbê ca³kowit¹ zapisan¹ w postaci ³añcucha na liczbe ca³kowit¹ typu int. Funkcja powinna przerywaæ konwersjê w momencie napotkania pierwszego znaku nie nale¿¹cego do zapisu liczby. ZAtem np. dla strTo Int("-13krowa) wynikiem powinno byæ -13
+
+  String wyraz=sc.nextLine();
+  char znak;
+ 
+  for (int i=0; i<wyraz.length();i++)
+  {
+    znak=wyraz.charAt(i);
+    boolean flaga = Character.isDigit(znak);
+    if(flaga==true || znak=='-' || znak=='+'){
+        System.out.print(znak);
+    }
+
+  }
+     System.out.println();   
+      
+----------------------------------------------
+Zdefiniowaæ funkcjê int strfinf(String gdzie, String co), która szuka ³añcucha "co" w ³añcuchu  "gdzie" i je¿eli go znajdzie to jej wynikiem jest pozycja, na której ten ³añcuch zaczyna siê w ³añcuchu gdzie. Je¿eli nie uda³o siê znaleŸæ ³añcucha to wtedy wynikiem ma byæ -1.
+
+   System.out.println("podaj pierwszy wyraz");
+       String dlugiCiag=sc.nextLine();
+       System.out.println("podaj prefiks");
+       String malyCiag=sc.nextLine();
+       
+    
+      
+        int indeks=dlugiCiag.indexOf(malyCiag);
+       int i=1;
+        
+        if(indeks!=-1)
+            System.out.println("index " + indeks);
+        else
+            i=0;  
+
+----------------------------------------------------
+Napisaæ funkcjê int word Count(String text), której wynikiem jest liczba wszystkich s³ów wystêpuj¹cych jako parametr w tekœcie. Do sprawdzenia, czy dany znak tekstu jest bia³ym znakiem mo¿na zastosowæ metodê Character.isWhitespace. Za s³owo przyjmujemy ka¿dy ci¹g znaków niezawieraj¹cy bia³ego znaku.
+
+       Scanner sc = new Scanner(System.in);
+                
+   System.out.println("podaj  wyrazy");
+       String dlugiCiag=sc.nextLine();
+     
+       char tab[]=dlugiCiag.toCharArray();
+       int dl=dlugiCiag.length();
+       int count=1;
+       
+       for(int i=0;i<dl;i++){
+           if(Character.isWhitespace(tab[i])){
+              count++; 
+           }
+       }
+       System.out.println("iloœæ wyrazów " + count );
+
+
+-----------------------------------------------------
+
+Zdefiniowaæ funkcjê int strFindAnd(String gdzie, String co), która zlicza wyst¹pienia ³añcucha co w ³añcuchu gdzie. jej wynikiem jest wyznaczona liczba wyst¹pieñ. Jeœli nie uda³o siê znaleŸæ ³añcucha to wtedy wynikiem jest oczywiœcie 0.
+
+  Scanner sc = new Scanner(System.in);
+                
+   System.out.println("podaj ci¹g wyrazow");
+       String dlugiCiag=sc.nextLine();
+    System.out.println("podaj czego w nim szukac");
+       String malyCiag=sc.nextLine();   
+       malyCiag=malyCiag.trim();
+     
+       String podzielone[]=null;
+       
+       podzielone=dlugiCiag.split(" ");
+       int j=0;
+    for(int i=0; i<podzielone.length; i++){
+       if(podzielone[i].equals(malyCiag)){
+         j+=1;  
+       }
+    }  
+       System.out.println("klucz wyst¹ppi³ w ci¹gu " +j+ " razy"); 
+ 
+------------------------------------------------------
+
+Zdefiniowaæ procedurê String struct (String str, int start, int ile) która wycian z podanego ³añcucha wszystko co znajduje siê w podanym zakresie. Wynikiem funkcji powinien byæ ³añcuch bez znaków znajduj¹cych siê na pozycjach od start do start +ile-1
+
+          
+                  
+      int tab1[]={1,1,1,2,2,2,3,3,3,4,4,4};
+      int tab2[]={5,5,5,5,5,6,6,6,6,6,7,7,7};
+     
+      
+      System.arraycopy(tab1, 0, tab2, 0, 3);
+      
+      int dl=tab2.length-1;
+      int calaDl=tab1.length-1;
+      System.arraycopy(tab1, 7, tab2,4 , 3);
+ 
+      System.out.println(Arrays.toString(tab2));
+
+
+
+
+
+ System.out.println("podaj lancuch znakow"); 
+      String lancuch=sc.nextLine();
+      System.out.println("podaj indeks od kiedy wyciac"); 
+      int cutStar=sc.nextInt();
+      System.out.println("podaj indeks do kiedy wyciac"); 
+      int cutSto=sc.nextInt();
+      
+      char tab1[]= lancuch.toCharArray(); 
+      char tab2[]={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
+      System.arraycopy(tab1, 0, tab2, 0, cutStar);
+      
+      //int dl=tab2.length-1;
+      //int calaDl=(tab1.length-1)-cutSto;
+      System.arraycopy(tab1, 7, tab2,cutStar , 8);
+       
+      for(int i=0;i<tab2.length;i++){
+           System.out.print(tab2[i]);
+       }
+      System.out.println();
+
+
+----------------------------------------------------
+Napisaæ funkcjê boolean czy Anagram(String t1, String t2), która sprawdza czy ³añcuch t2 jest anagramem tekstu t1, czyli czy sk³ada sie z tych samych znaków ale ustawionych niekoniecznie w tej samej kolejnoœci
+
+
+     String firstWord="klementyna";
+     String secondWord="mentynakle";
+     char[] word1 = firstWord.toCharArray();   //replaceAll("[\\s]", "").toCharArray();
+     char[] word2 = secondWord.toCharArray();   //replaceAll("[\\s]", "").toCharArray();
+     Arrays.sort(word1);
+     Arrays.sort(word2);
+    if (Arrays.equals(word1, word2)){
+        System.out.print("anagram");
+    }
+    else
+       System.out.print("not anagram"); 
+
+-----------------------------------------------
+
+Napisz program,który pobiera od u¿ytkownika liczbê ca³kowit¹ dodatni¹ a nastêpnie wyœwietla na ekranie 
+kolejno wszystkie liczby nieparzyste nie wiêksze od podanej liczby. Przyk³ad dla 15 program powinien wyœwietliæ 1,3,5,7,9,11,13,15
+
+public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a=1,i=0;
+        do {
+        System.out.println("Podaj liczbe ca³kowit¹ dodatni¹");
+        a=sc.nextInt();
+        }while (a<0);
+                
+        for(i=1;i<a+1;i++)
+        {
+            if(i%2==1)
+            System.out.println(i);
+        }
+}
+}
+
+-------------------------------------------------
+
+Napisaæ program pobieraj¹cy od u¿ytkownika dwie liczby ca³kowite A oraz B, A < B a nastêpnie wyznacza sumê ci¹gu liczb od A do B. Obliczenia nale¿y wykonaæ trzykrotnie stosuj¹c kolejno pêtle: while, do while, for/
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a=0,b=0;
+        
+        System.out.println("podaj liczbe a"); 
+         a=sc.nextInt();
+        do{
+            System.out.println("podaj liczbe b wieksza od a");
+             b=sc.nextInt();
+        }while(b<a);
+        
+        int i=a, suma=a;
+        while(i<b){
+         suma=suma+(i+1);
+         i++;
+        }
+         System.out.println("wynik: "+suma);
+         
+          i=a;
+          suma=a;
+         do{
+           suma=suma+(i+1);
+         i++;   
+         }while(i<b);
+         System.out.println("wynik: "+suma);
+         
+         suma=a;
+         for(i=a;i<b;i++)
+         {
+           suma=suma+(i+1);
+          
+         }
+         System.out.println("wynik: "+suma);
+}
+
+-----------------------------------------
+
+Napisz program, który wczytuje od u¿ytkownika liczbê ca³kowit¹ dodani¹ n, a nastêpnie wyœwietla na ekranie wszystkie potêgi liczby 2 nie wiêksze ni¿ podana liczba. Przyk³adowo dla luczby 71 program powinien wyœwietliæ: 1,2,4,8,16,32,64
+
+ public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       int a=0;
+       
+        do{
+            System.out.println("podaj liczbe ca³kowit¹ dodatni¹");
+            a=sc.nextInt();
+        }while(a<0);
+        
+        int potega=1;
+        while(potega<a){
+            potega*=2;
+            if(potega<a)
+            System.out.println(potega);
+        }
+}
+}
+
+-----------------------------------------
+
+Napisaæ program, który wczytuje liczby podawane przez u¿ytkownika dot¹d dopóki nie podana zostanie liczba 0. nastêpnie wyœwietliæ sumê wszystkich podanych liczb.
+
+  Scanner sc = new Scanner(System.in);
+      int a=1, suma=0;
+        while(a!=0)
+        {
+            a=sc.nextInt();
+            suma+=a;
+        }
+        System.out.println("suma podanych liczb: " +suma);
+
+------------------------------------------
+
+Gra w "za du¿o za ma³o". Komputer losuje liczbê z zakresu 1...100, a gracz (u¿ytkownik) ma za zafanie odgadn¹æ, co to za liczba poprzez podawanie kolejnych wartoœci. Je¿eli podana wartoœæ jest:
+-wieksza -wyœwietlany jest komunikat "poda³eœ za du¿¹ wartoœæ"
+- mniejsza - wyœwietlany jest komunikat "poda³eœ za ma³¹ wartoœæ"
+-identyczna z wylosowan¹ - wyœwietlany jest komunikat " Gratulacje" i gra siê koñczy
+
+      Scanner sc = new Scanner(System.in);
+     Random r=new Random();
+    int a=r.nextInt(100)-0;
+    
+    int b=-1;
+    while(b!=a){
+        System.out.println("podaj liczbe od 0 do 100");
+        b=sc.nextInt();
+        
+        if(b<a)
+        System.out.println("poda³eœ za ma³¹ liczbê");
+        else if (b>a)
+        System.out.println("poda³eœ za du¿¹ liczbê");
+        else
+            System.out.println("gratulacje");
+    }
+       
+
+-------------------------------------------
+
+Napisaæ program dzia³aj¹cy w trybie konsolowym (tekstowym) i rysuj¹cy na ekranie prostok¹t. U¿ytkownik podaje znak wype³ienia prostok¹ta, pozycjê lewego górnego rogu prostok¹ta (x,y) oraz d³ugoœci boków prostok¹ta (a,b). Przyjmujemy, ¿e lewy górny naro¿nik konsoli ma wspó³rzêdne (x,y)=(1,1).
+
+System.out.println("podaj znak wype³nienia prostok¹ta");
+       char znak='a';
+      
+       try {
+           znak=(char)System.in.read();
+       }
+       catch (Exception e){
+           
+       }
+        System.out.println("podaj szerokoœæ prostok¹ta");
+        int x=sc.nextInt();
+        System.out.println("podaj d³ugoœæ prostok¹ta");
+        int y=sc.nextInt();
+        
+        for(int i=0; i<y; i++){
+             for(int j=0; j<x; j++){
+                 System.out.print(znak);
+             }
+             System.out.println();
+        }
+
+--------------------------------------------
+
+Napisaæ program, który pobiera od u¿ytkownika liczbê ca³kowit¹,, a nastêpnie :
+-oblicza sumê cyfr tej liczby,
+- stosunek œredniej arytmetycznej cyfr parzystych do œredniej arytmetycznej cyfr nieparzystych.
+
+
+   int a=589642;
+        int b=0, sumaParzyste=0;
+        int c=0,i=0,j=0, sumaNieParzyste=0;
+               
+        while(a>0){
+            b=a%10;
+            a=a/10;
+            c+=b;
+            
+            if(b%2==0){
+                sumaParzyste+=b;
+                i++;
+            }
+            if(b%2==1){
+                sumaNieParzyste+=b;
+                j++;
+            }
+        }
+      
+        double arythm=((sumaParzyste/i)/(sumaNieParzyste/j));
+        System.out.println("Suma cyfr tej liczby " +c);
+        System.out.println("Arytmetyczne  " + arythm);
+
+-------------------------------------------
+
+Napisaæ program, dla podanej liczby ca³kowitej wyœwietla jej dzielniki. przyk³adowo dla liczby 21 dzielniki to 1,3,7,21
+
+   Scanner sc = new Scanner(System.in);
+      System.out.println("podaj liczbe");
+      int a=sc.nextInt();
+      System.out.println("dzielniki tej liczby to");
+      for(int i=1; i<=a;i++){
+          if(a%i==0)
+          {
+              int b=i;
+              System.out.println(i);
+          }
+              }
+
+
+---------------------------
+
+Napisaæ program, który sprawdza, czy podana liczba ca³kowita n , n >1 jest liczb¹ pierwsz¹
+
+
+  public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+       int a=-1,j=0, modulo=0;
+       do{
+           System.out.println("podaj liczbe calkowita dodatnia");
+           a=sc.nextInt();
+       }while(a<0);
+       
+             
+              for(int i=1;i<a+1; i++ )
+              {
+                  modulo=a%i;
+                  if(modulo==0){
+                   j++; 
+                  }
+                  
+              }
+   
+        if(j==2)
+            System.out.println("tak to jest liczba pierwsza");
+        else 
+           System.out.println("nie to nie jest liczba pierwsza"); 
+}
+}
+
+--------------------------------
+
+napisaæ program, który wczytuje od u¿ytkownika ci¹g znaków, a nastêpnie wyœwietla informacjê o tym ile razy w tym ci¹gu powta¿a sie jego ostatni znak
+Przyk³ad: abrakadabra, program powinien wyœwietliæ 4 bo a jest ostatni¹ liter¹ i pojawia siê 4 razy
+
+ System.out.println("podaj ci¹g znaków");
+         String napis=sc.nextLine();
+         char tablica[];
+         int lg=napis.length();
+    
+         tablica=napis.toCharArray();
+        
+         int c=0;
+        
+         for(int i=0; i<lg; i++){
+           if(tablica[i]==tablica[lg-1]){
+                c+=1;
+            }
+             }
+        System.out.println("ostatnia litera pojawila sie "+c+" razy");
+
+-----------------------------------
+
+napisaæ program sumuj¹cy cyfry w tekscie podanym przez u¿ytkownika
+Przyk³ad: Ala ma 1 psa i 2 koty. Jola ma 10 rybek i 2 papugi"
+wynik 6
+
+ System.out.println("podaj równanie");
+         String napis=sc.nextLine();
+         char tablica[];
+         int lg=napis.length();
+    
+         tablica=napis.toCharArray();
+        int suma=0;
+       for(int i=0;i<lg;i++)
+	{
+	if(Character.isDigit(napis.charAt(i))){
+	System.out.println(napis.charAt(i));
+       char a=napis.charAt(i);
+       int b=(a-48);
+            suma+=b;
+       		}
+        }
+       System.out.println("suma cyfr "+suma);
+
+---------------------------------------
+
+ napisz program który sprawdzi czy w podanym przezu¿ytkownika wyra¿eniu arytmetycznym nawiasy si¹ poprawnie sparowane. Wyra¿enie podawane jest jako pojedynczy ³añcuch znaków. Program powinien wyœwietliæ stosowny komunikat.
+
+ System.out.println("podaj równanie");
+         String napis=sc.nextLine();
+         char tablica[];
+         int lg=napis.length();
+    
+         tablica=napis.toCharArray();
+        
+         int c=0,d=0;
+        
+         for(int i=0; i<lg; i++){
+           if(tablica[i]=='('){
+                c+=1;
+            }
+           else if(tablica[i]==')'){
+               d+=1;
+           }
+             }
+         
+         if(d==c){
+        System.out.println("nawiasy s¹ wstawione prawid³owo");
+         }
+         else if(d!=c){
+          System.out.println("Nie, nawiasy nie s¹ wstawione prawid³owo");   
+         } 
+
+-----------------------------------------
+
+Napisz program, który umo¿liwia szyfrowanie podanego ci¹gu znaków przy u¿yciu szyfru Cezara, który jest szczególnym przypadkiem szyfru podstawieniowego monoalfabetycznego.
+U¿ytkownik podaje tekst do zaszyfrowania i liczbê n o któr¹ przesówamy alfabet za pomoc¹ którego szyfrujemy tekst.
+
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random r=new Random();
+        
+         System.out.println("podaj napis do zaszyfrowania");
+         String napis=sc.nextLine();
+         System.out.println("podaj wartoœæ przesuniecia");
+         int przesuniecie=sc.nextInt();
+         
+         char tablica[];
+         int lg=napis.length();
+         int suma=0;
+         
+         tablica=napis.toCharArray();
+        
+       for(int i=0;i<lg;i++)
+	{	
+       char a=napis.charAt(i);
+       int n=(int)a;
+       n+=przesuniecie;
+       a=(char)n;                
+       	System.out.print(a);	
+        }
+       System.out.println();
+}
+}
+
+--------------------------------------------
